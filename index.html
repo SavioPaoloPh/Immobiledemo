@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxury Real Estate Experience</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family: Georgia, 'Times New Roman', serif;
+      background:#0e0d0b;
+      color:#f4eee3;
+      line-height:1.6;
+    }
+
+    body.no-scroll { overflow:hidden; }
+
+    a { text-decoration:none; color:inherit; }
+
+    .hero {
+      min-height:100vh;
+      background:linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.65)), url('hero-appartamento.jpg') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .hero-content { max-width:1100px; }
+
+    .eyebrow {
+      text-transform:uppercase;
+      letter-spacing:4px;
+      font-size:13px;
+      color:#c7a56b;
+      margin-bottom:22px;
+      font-family:Arial, sans-serif;
+    }
+
+    h1 {
+      font-size:clamp(42px,7vw,88px);
+      font-weight:400;
+      line-height:1.05;
+      margin-bottom:28px;
+    }
+
+    .hero p {
+      font-family:Arial, sans-serif;
+      font-size:18px;
+      max-width:1100px;
+      margin:0 auto 38px;
+      color:#e8dfd0;
+    }
+
+    .btn {
+      display:inline-block;
+      padding:16px 34px;
+      border:1px solid #c7a56b;
+      background:#c7a56b;
+      color:#0e0d0b;
+      text-transform:uppercase;
+      letter-spacing:2px;
+      font-family:Arial, sans-serif;
+      font-size:12px;
+      transition:.3s;
+      margin:6px;
+    }
+
+    .btn.secondary { background:transparent; color:#f4eee3; }
+
+    .btn:hover { transform:translateY(-2px); opacity:.9; }
+
+    section { padding:100px 7%; }
+
+    .section-title { max-width:1100px; margin-bottom:55px; }
+
+    .section-title span {
+      color:#c7a56b;
+      text-transform:uppercase;
+      letter-spacing:3px;
+      font-family:Arial, sans-serif;
+      font-size:12px;
+    }
+
+    .section-title h2 {
+      font-size:clamp(34px,5vw,58px);
+      font-weight:400;
+      margin-top:12px;
+      line-height:1.1;
+    }
+
+    .section-title p {
+      font-family:Arial, sans-serif;
+      color:#cfc5b4;
+      margin-top:20px;
+      font-size:17px;
+    }
+
+    .gallery {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+    }
+
+    .gallery a { display:block; overflow:hidden; }
+
+    .gallery img {
+      width:100%;
+      aspect-ratio:1/1;
+      object-fit:cover;
+      filter:brightness(.88);
+      cursor:pointer;
+      transition:.4s;
+    }
+
+    .gallery img:hover { transform:scale(1.05); filter:brightness(.7); }
+
+    .media-box {
+      background:#171511;
+      border:1px solid rgba(199,165,107,.25);
+      padding:18px;
+    }
+
+    iframe, video {
+      width:100%;
+      min-height:560px;
+      border:none;
+      display:block;
+      background:#000;
+    }
+
+    .features {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:20px;
+    }
+
+    .feature {
+      border-top:1px solid rgba(199,165,107,.5);
+      padding-top:22px;
+    }
+
+    .feature strong {
+      display:block;
+      font-size:34px;
+      font-weight:400;
+      color:#c7a56b;
+    }
+
+    .feature span {
+      font-family:Arial, sans-serif;
+      color:#cfc5b4;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-size:12px;
+    }
+
+    .split {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .split img {
+      width:100%;
+      height:620px;
+      object-fit:cover;
+    }
+
+    .split p {
+      font-family:Arial, sans-serif;
+      color:#d8cebd;
+      margin-bottom:20px;
+      font-size:17px;
+    }
+
+    .cta {
+      text-align:center;
+      background:linear-gradient(rgba(14,13,11,.88), rgba(14,13,11,.9)), url('dettaglio-casa.jpg') center/cover no-repeat;
+      padding:130px 20px;
+    }
+
+    .cta h2 {
+      font-size:clamp(36px,5vw,66px);
+      font-weight:400;
+      margin-bottom:24px;
+    }
+
+    .cta p {
+      max-width:1100px;
+      margin:0 auto 35px;
+      font-family:Arial, sans-serif;
+      color:#ddd2c2;
+      font-size:18px;
+    }
+
+    footer {
+      padding:35px 7%;
+      border-top:1px solid rgba(199,165,107,.25);
+      font-family:Arial, sans-serif;
+      color:#9f9585;
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    #overlay {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.94);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      padding:34px;
+    }
+
+    #overlay.active { display:flex; }
+
+    #overlay img {
+      max-width:92%;
+      max-height:88%;
+      object-fit:contain;
+    }
+
+    @media(max-width:1100px){
+      .gallery,.features,.split{ grid-template-columns:1fr; }
+      section{ padding:70px 24px; }
+      iframe,video{ min-height:360px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-content">
+    <div class="eyebrow">Private Real Estate Experience</div>
+    <h1>Scopri l’immobile prima ancora di varcare la porta.</h1>
+    <p>Una presentazione digitale premium con immagini professionali, video immersivo e tour 3D interattivo per valorizzare ogni dettaglio dell’appartamento.</p>
+    <a class="btn" href="#tour">Esplora il tour 3D</a>
+    <a class="btn secondary" href="#contatto">Richiedi informazioni</a>
+  </div>
+</header>
+
+<section>
+  <div class="section-title">
+    <span>Visual Gallery</span>
+    <h2>Ogni ambiente raccontato con precisione, luce e atmosfera.</h2>
+    <p>La galleria fotografica non serve solo a mostrare gli spazi. Serve a far percepire proporzioni, materiali, luminosità e potenziale abitativo.</p>
+  </div>
+
+  <div class="gallery">
+    <a href="scala.jpg" class="lightbox"><img src="scala.jpg" /></a>
+    <a href="soggiorno1.jpg" class="lightbox"><img src="soggiorno1.jpg" /></a>
+    <a href="soggiorno2.jpg" class="lightbox"><img src="soggiorno2.jpg" /></a>
+    <a href="soggiorno3.jpg" class="lightbox"><img src="soggiorno3.jpg" /></a>
+    <a href="cucina.jpg" class="lightbox"><img src="cucina.jpg" /></a>
+    <a href="camera.jpg" class="lightbox"><img src="camera.jpg" /></a>
+    <a href="bagno.jpg" class="lightbox"><img src="bagno.jpg" /></a>
+    <a href="balcone.jpg" class="lightbox"><img src="balcone.jpg" /></a>
+  </div>
+</section>
+
+<section>
+  <div class="section-title">
+    <span>Cinematic Video</span>
+    <h2>Non solo metri quadri. </h2>
+    <h2>Una sensazione reale dello spazio.</h2>
+    <p>Il video accompagna il cliente dentro l’immobile con un ritmo fluido e naturale.</p>
+  </div>
+
+  <div class="media-box">
+    <iframe 
+  src="https://www.youtube-nocookie.com/embed/wuUdlG4-Ng8"
+  title="Video appartamento"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  allowfullscreen>
+</iframe>
+  </div>
+</section>
+
+<section id="tour">
+  <div class="section-title">
+    <span>Interactive 3D Tour</span>
+    <h2>Un percorso digitale completo, stanza dopo stanza.</h2>
+    <p>Il tour 3D permette di muoversi liberamente negli spazi.</p>
+  </div>
+
+  <div class="media-box">
+    <iframe src="https://pano.cool/p/01KQCQW9SSPZD6E7DWFPJWFD3P"></iframe>
+  </div>
+</section>
+
+<section id="contatto" class="cta">
+  <h2>Vuoi vedere l’immobile dal vivo?</h2>
+  <p>Dopo aver esplorato tutto, puoi richiedere una visita privata.</p>
+  <a class="btn" href="#">Contatta</a>
+</section>
+
+<footer>
+  <div>Luxury Real Estate Digital Presentation</div>
+  <div>Foto · Video · Tour 3D</div>
+</footer>
+
+</body>
+</html>
